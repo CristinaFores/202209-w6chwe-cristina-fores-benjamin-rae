@@ -1,24 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Robots } from "../../types/Robot";
+import { Robots, RobotsState } from "./types";
 
-interface RobotsStatus {
-  robosList: Robots;
-}
-
-const initialState: RobotsStatus = {
-  robosList: [],
+const initialState: RobotsState = {
+  robotsList: [],
 };
 
 const robotSilce = createSlice({
   name: "robots",
   initialState,
   reducers: {
-    loadRobots: (
-      currentState,
-      action: PayloadAction<Robots>
-    ): RobotsStatus => ({
+    loadRobots: (currentState, action: PayloadAction<Robots>): RobotsState => ({
       ...currentState,
-      robosList: [...initialState.robosList, action.payload],
+      robotsList: [...action.payload],
     }),
   },
 });

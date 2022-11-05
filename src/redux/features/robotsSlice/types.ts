@@ -7,4 +7,8 @@ export interface Robot {
   _id?: number;
 }
 
-export type Robots = Robots[];
+export interface RobotsState {
+  robotsList: Robots;
+}
+
+export type Robots = Robot[];
