@@ -1,11 +1,11 @@
 import { useCallback } from "react";
 import { loadRobotsActionCreator } from "../redux/features/robotsSlice/robotsSlice";
-import { Robots } from "../redux/features/robotsSlice/types";
 import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
 } from "../redux/features/uiSlice/uiSlice";
 import { useAppDispatch } from "../redux/hooks";
+import { RobotsResponse } from "./types";
 
 interface UseApi {
   loadAllRobots: () => Promise<void>;
@@ -19,13 +19,13 @@ const useApi = (): UseApi => {
     dispatch(showLoadingActionCreator());
     try {
       const response = await fetch(url!);
-      const apiResponse: Robots = await response.json();
+      const apiResponse: RobotsResponse = await response.json();
 
       if (response.status >= 400) {
         throw new Error("Couldn't load robots");
       }
 
-      dispatch(loadRobotsActionCreator(apiResponse));
+      dispatch(loadRobotsActionCreator(apiResponse.robots));
       dispatch(hideLoadingActionCreator());
     } catch (error: unknown) {
       dispatch(hideLoadingActionCreator());

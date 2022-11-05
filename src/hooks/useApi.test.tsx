@@ -1,5 +1,6 @@
 import { renderHook } from "@testing-library/react";
 import { Provider } from "react-redux";
+import mockRobotsResponse from "../mocks/mockRobotsResponse";
 import { loadRobotsActionCreator } from "../redux/features/robotsSlice/robotsSlice";
 import {
   hideLoadingActionCreator,
@@ -35,7 +36,10 @@ describe("Given the useApi custom hook", () => {
         1,
         showLoadingActionCreator()
       );
-      expect(dispatchSpy).toHaveBeenNthCalledWith(2, loadRobotsActionCreator());
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        2,
+        loadRobotsActionCreator(mockRobotsResponse)
+      );
       expect(dispatchSpy).toHaveBeenNthCalledWith(
         3,
         hideLoadingActionCreator()

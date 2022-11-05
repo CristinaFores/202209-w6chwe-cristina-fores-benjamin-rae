@@ -11,7 +11,7 @@ const robotsFactory = Factory.define<Robot>(() => ({
   id: faker.random.alphaNumeric(),
 }));
 
-export const getRandomRobot = robotsFactory.build();
+export const getRandomRobot = () => robotsFactory.build();
 
 export const getRandomRobotsList = (number: number) =>
   robotsFactory.buildList(number);
