@@ -1,12 +1,11 @@
+import { useAppSelector } from "../../redux/hooks";
 import Loading from "../Loading/Loading";
 import AppStyled from "./AppStyled";
 
 function App() {
-  return (
-    <AppStyled>
-      <Loading />
-    </AppStyled>
-  );
+  const isLoading = useAppSelector((state) => state.ui.isLoading);
+
+  return <AppStyled>{isLoading && <Loading />}</AppStyled>;
 }
 
 export default App;
