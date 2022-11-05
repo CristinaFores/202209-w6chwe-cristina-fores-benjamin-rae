@@ -5,14 +5,17 @@ import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
 } from "../redux/features/uiSlice/uiSlice";
-
 import { useAppDispatch } from "../redux/hooks";
 
-const useApi = () => {
+interface UseApi {
+  loadAllRobots: () => Promise<void>;
+}
+
+const useApi = (): UseApi => {
   const dispatch = useAppDispatch();
   const url = process.env.REACT_APP_URL_API;
 
-  const loadAllRobot = useCallback(async () => {
+  const loadAllRobots = useCallback(async () => {
     dispatch(showLoadingActionCreator());
     try {
       const response = await fetch(url!);
@@ -31,7 +34,7 @@ const useApi = () => {
     }
   }, [url, dispatch]);
 
-  return { loadAllRobot };
+  return { loadAllRobots };
 };
 
 export default useApi;
