@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import useApi from "./hook/useApi";
+import useApi from "./hooks/useApi";
 import { useAppDispatch } from "./redux/hooks";
 
 function App() {
