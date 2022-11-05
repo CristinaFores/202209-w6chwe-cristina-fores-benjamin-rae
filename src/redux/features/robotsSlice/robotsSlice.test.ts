@@ -1,4 +1,4 @@
-import { Robot, Robots, RobotsState } from "./types";
+import { Robots, RobotsState } from "./types";
 import { loadRobotsActionCreator, robotsReducer } from "./robotsSlice";
 
 describe("Given the  robotsReducer", () => {
