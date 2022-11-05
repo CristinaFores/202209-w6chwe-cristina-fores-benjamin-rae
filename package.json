@@ -46,8 +46,9 @@
     ]
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.26",
     "husky": "^8.0.0",
+    "msw": "^0.47.4",
+    "@types/styled-components": "^5.1.26",
     "styled-components": "^5.3.6"
   },
   "jest": {
