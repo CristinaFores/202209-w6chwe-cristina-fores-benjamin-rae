@@ -5,7 +5,7 @@ const Loading = () => {
     <LoadingStyled>
       <div
         className="loader"
-        role="contentinfo"
+        role="alert"
         aria-label="The page is loading"
       ></div>
     </LoadingStyled>
