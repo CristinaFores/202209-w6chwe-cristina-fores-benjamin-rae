@@ -1,4 +1,3 @@
-import React from "react";
 import AppStyled from "./AppStyled";
 
 function App() {
