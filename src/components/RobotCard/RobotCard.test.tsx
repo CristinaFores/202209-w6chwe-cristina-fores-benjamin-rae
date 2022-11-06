@@ -6,7 +6,7 @@ import RobotCard from "./RobotCard";
 
 describe("Given a RobotCard componet", () => {
   describe("when its is rendered", () => {
-    test("Then its should show an image with alt text name robot,headding level 2 and 2 buttons", () => {
+    test("Then its should show an image with alt text name robot,headding level 3 and 2 buttons", () => {
       const robot = getRandomRobot();
       const { name, image, createdOn, speed, strength } = robot;
       const textButtonEdit = "Edit";
@@ -19,7 +19,7 @@ describe("Given a RobotCard componet", () => {
       );
 
       const rendertRobotName = screen.queryByRole("heading", {
-        level: 2,
+        level: 3,
         name: name,
       });
       const renderImageRobot = screen.queryByRole("img", {

@@ -16,7 +16,7 @@ const RobotsList = () => {
     <RobotsListStyled className="robots-list">
       <h2 className="robots-list__title">Robots</h2>
       {robots && (
-        <ul>
+        <ul className="robots-list__list">
           {robots.map((robot) => (
             <RobotCard robot={robot} key={robot._id} />
           ))}
