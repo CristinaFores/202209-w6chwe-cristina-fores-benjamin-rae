@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { Route, Routes } from "react-router";
+import HomePage from "../../pages/HomePage/HomePage";
 import useApi from "../../hooks/useApi";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import { useAppSelector } from "../../redux/hooks";
@@ -13,7 +15,14 @@ function App() {
     loadAllRobots();
   }, [loadAllRobots]);
 
-  return <AppStyled>{isLoading && <Loading />}</AppStyled>;
+  return (
+    <AppStyled>
+      {isLoading && <Loading />}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </AppStyled>
+  );
 }
 
 export default App;
