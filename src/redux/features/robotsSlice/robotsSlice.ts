@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, current, PayloadAction } from "@reduxjs/toolkit";
 import { Robots, RobotsState } from "./types";
 
 const initialState: RobotsState = {
@@ -12,6 +12,15 @@ const robotSilce = createSlice({
     loadRobots: (currentState, action: PayloadAction<Robots>): RobotsState => ({
       ...currentState,
       robotsList: [...action.payload],
+    }),
+    deleteRobot: (
+      currentState,
+      action: PayloadAction<string>
+    ): RobotsState => ({
+      ...currentState,
+      robotsList: currentState.robotsList.filter(
+        (robot) => robot._id !== action.payload
+      ),
     }),
   },
 });

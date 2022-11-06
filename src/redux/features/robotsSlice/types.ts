@@ -4,7 +4,7 @@ export interface Robot {
   speed: number;
   strength: number;
   createdOn: string;
-  _id?: number;
+  _id?: string;
 }
 
 export interface RobotsState {
