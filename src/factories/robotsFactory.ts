@@ -8,7 +8,7 @@ const robotsFactory = Factory.define<Robot>(() => ({
   createdOn: `${faker.date.past()}`,
   image: faker.image.imageUrl(),
   speed: faker.datatype.number({ max: 10 }),
-  id: faker.random.alphaNumeric(),
+  _id: faker.random.alphaNumeric(),
 }));
 
 export const getRandomRobot = () => robotsFactory.build();

@@ -1,4 +1,4 @@
-import { createSlice, current, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Robots, RobotsState } from "./types";
 
 const initialState: RobotsState = {
@@ -25,6 +25,9 @@ const robotSilce = createSlice({
   },
 });
 
-export const { loadRobots: loadRobotsActionCreator } = robotSilce.actions;
+export const {
+  loadRobots: loadRobotsActionCreator,
+  deleteRobot: deleteRobotActionCreator,
+} = robotSilce.actions;
 
 export const robotsReducer = robotSilce.reducer;
