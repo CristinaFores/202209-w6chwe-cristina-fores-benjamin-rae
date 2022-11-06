@@ -20,6 +20,7 @@ function App() {
       {isLoading && <Loading />}
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </AppStyled>
   );
