@@ -21,8 +21,8 @@ const RobotCard = ({
       </div>
       <h2 className="card-robot__title">{`${name}`}</h2>
       <div className="card-robot__buttons">
-        <Button text="Edit" action={() => {}} />
-        <Button text="Delete" action={() => {}} />
+        <Button text="Edit" />
+        <Button text="Delete" />
       </div>
     </RobotCardStyled>
   );
