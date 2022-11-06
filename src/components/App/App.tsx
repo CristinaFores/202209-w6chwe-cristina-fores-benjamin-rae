@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { Route, Routes } from "react-router";
+import HomePage from "../../pages/HomePage/HomePage";
 import useApi from "../../hooks/useApi";
 import { useAppSelector } from "../../redux/hooks";
 import Header from "../Header/Header";
@@ -16,7 +18,9 @@ function App() {
   return (
     <AppStyled>
       {isLoading && <Loading />}
-      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
     </AppStyled>
   );
 }
