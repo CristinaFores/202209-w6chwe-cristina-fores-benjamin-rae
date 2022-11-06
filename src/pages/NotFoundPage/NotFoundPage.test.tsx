@@ -11,7 +11,11 @@ describe("Given the NotFoundPage component", () => {
       const errorCodeText = /404/;
       const errorText = /page not found/i;
 
-      render(<NotFoundPage />);
+      render(
+        <BrowserRouter>
+          <NotFoundPage />
+        </BrowserRouter>
+      );
       const renderedCode = screen.queryByText(errorCodeText);
       const renderedMessage = screen.queryByText(errorText);
       const renderedButton = screen.queryByRole("button", {
