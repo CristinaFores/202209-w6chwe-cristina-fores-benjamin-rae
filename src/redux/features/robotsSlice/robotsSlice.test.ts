@@ -10,7 +10,7 @@ describe("Given the  robotsReducer", () => {
           image: "",
           speed: 1,
           strength: 1,
-          createdOn: 1,
+          createdOn: "",
         },
       ];
       const expectedState: RobotsState = {
