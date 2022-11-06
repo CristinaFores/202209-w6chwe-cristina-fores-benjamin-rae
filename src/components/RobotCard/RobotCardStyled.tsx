@@ -8,9 +8,14 @@ export const RobotCardStyled = styled.li`
   .card-robot {
     &__image-container {
       position: relative;
+      border-radius: 10px;
     }
     &__image {
       object-fit: cover;
+      height: 100%;
+      min-width: 100%;
+      display: block;
+      border-radius: 10px;
     }
     &__info {
       position: absolute;
@@ -25,6 +30,7 @@ export const RobotCardStyled = styled.li`
       align-items: center;
       gap: 1rem;
       opacity: 0;
+      border-radius: 10px;
 
       &:hover,
       :focus {
@@ -45,6 +51,14 @@ export const RobotCardStyled = styled.li`
       &:hover,
       :focus {
         background-color: ${(props) => props.theme.backgroundColorPrimary};
+      }
+    }
+  }
+
+  @media only screen and (min-width: 480px) {
+    .card-robot {
+      &__image {
+        height: 300px;
       }
     }
   }

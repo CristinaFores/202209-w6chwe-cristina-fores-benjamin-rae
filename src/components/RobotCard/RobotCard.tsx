@@ -19,7 +19,7 @@ const RobotCard = ({
           <li className="card-robot__text">{`📆: ${createdOn}`}</li>
         </ul>
       </div>
-      <h2 className="card-robot__title">{`${name}`}</h2>
+      <h3 className="card-robot__title">{`${name}`}</h3>
       <div className="card-robot__buttons">
         <Button text="Edit" />
         <Button text="Delete" />
