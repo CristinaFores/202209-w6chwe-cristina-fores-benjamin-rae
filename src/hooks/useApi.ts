@@ -1,5 +1,8 @@
 import { useCallback } from "react";
-import { loadRobotsActionCreator } from "../redux/features/robotsSlice/robotsSlice";
+import {
+  deleteRobotActionCreator,
+  loadRobotsActionCreator,
+} from "../redux/features/robotsSlice/robotsSlice";
 import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
@@ -9,6 +12,7 @@ import { RobotsResponse } from "./types";
 
 interface UseApi {
   loadAllRobots: () => Promise<void>;
+  deleteRobotById: (id: string) => Promise<void>;
 }
 
 const useApi = (): UseApi => {
@@ -34,7 +38,23 @@ const useApi = (): UseApi => {
     }
   }, [url, dispatch]);
 
-  return { loadAllRobots };
+  const deleteRobotById = async (id: string) => {
+    const token = process.env.REACT_APP_TOKEN;
+    try {
+      const response = await fetch(`${url}/robot/${id}?token=${token}`, {
+        method: "DELETE",
+      });
+      if (response.status >= 400) {
+        throw new Error("Couldn't delete robot");
+      }
+
+      dispatch(deleteRobotActionCreator(id));
+    } catch (error: unknown) {
+      throw new Error(`There was an error: ${(error as Error).message}`);
+    }
+  };
+
+  return { loadAllRobots, deleteRobotById };
 };
 
 export default useApi;

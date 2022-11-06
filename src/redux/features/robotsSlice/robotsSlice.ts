@@ -13,9 +13,21 @@ const robotSilce = createSlice({
       ...currentState,
       robotsList: [...action.payload],
     }),
+    deleteRobot: (
+      currentState,
+      action: PayloadAction<string>
+    ): RobotsState => ({
+      ...currentState,
+      robotsList: currentState.robotsList.filter(
+        (robot) => robot._id !== action.payload
+      ),
+    }),
   },
 });
 
-export const { loadRobots: loadRobotsActionCreator } = robotSilce.actions;
+export const {
+  loadRobots: loadRobotsActionCreator,
+  deleteRobot: deleteRobotActionCreator,
+} = robotSilce.actions;
 
 export const robotsReducer = robotSilce.reducer;
