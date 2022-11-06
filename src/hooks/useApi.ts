@@ -9,6 +9,7 @@ import { RobotsResponse } from "./types";
 
 interface UseApi {
   loadAllRobots: () => Promise<void>;
+  deleteRobotById: (id: string) => Promise<void>;
 }
 
 const useApi = (): UseApi => {
@@ -34,7 +35,9 @@ const useApi = (): UseApi => {
     }
   }, [url, dispatch]);
 
-  return { loadAllRobots };
+  const deleteRobotById = async (id: string) => {};
+
+  return { loadAllRobots, deleteRobotById };
 };
 
 export default useApi;
