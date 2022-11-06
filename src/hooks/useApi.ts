@@ -3,7 +3,6 @@ import {
   deleteRobotActionCreator,
   loadRobotsActionCreator,
 } from "../redux/features/robotsSlice/robotsSlice";
-import { Robot } from "../redux/features/robotsSlice/types";
 import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
