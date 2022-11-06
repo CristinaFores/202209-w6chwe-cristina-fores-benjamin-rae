@@ -1,3 +1,4 @@
+import { applyMiddleware } from "@reduxjs/toolkit";
 import { renderHook } from "@testing-library/react";
 import { Provider } from "react-redux";
 import mockRobotsResponse from "../mocks/mockRobotsResponse";
@@ -44,6 +45,21 @@ describe("Given the useApi custom hook", () => {
         3,
         hideLoadingActionCreator()
       );
+    });
+  });
+  describe("When its method deleteRobotById is invoked", () => {
+    test("Then is should  call the dispatch", async () => {
+      const {
+        result: {
+          current: { deleteRobotById },
+        },
+      } = renderHook(() => useApi(), {
+        wrapper: ProviderWrapper,
+      });
+      const idRobot = "2";
+      await deleteRobotById(idRobot);
+
+      expect(dispatchSpy).toHaveBeenCalled();
     });
   });
 });

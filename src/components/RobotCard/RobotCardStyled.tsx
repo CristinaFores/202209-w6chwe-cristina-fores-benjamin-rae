@@ -12,6 +12,7 @@ export const RobotCardStyled = styled.li`
     }
     &__image {
       object-fit: cover;
+      object-position: top;
       height: 100%;
       min-width: 100%;
       display: block;
@@ -38,6 +39,7 @@ export const RobotCardStyled = styled.li`
       }
     }
     &__text {
+      font-size: 1.2rem;
     }
     &__title {
       display: flex;

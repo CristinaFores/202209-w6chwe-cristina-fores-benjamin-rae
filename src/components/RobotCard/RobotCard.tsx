@@ -1,3 +1,5 @@
+import { useState } from "react";
+import useApi from "../../hooks/useApi";
 import { Robot } from "../../redux/features/robotsSlice/types";
 import Button from "../Button/Button";
 import { RobotCardStyled } from "./RobotCardStyled";
@@ -7,8 +9,10 @@ interface RobotCardProps {
 }
 
 const RobotCard = ({
-  robot: { image, name, speed, createdOn, strength },
+  robot: { image, name, speed, createdOn, strength, _id: id },
 }: RobotCardProps): JSX.Element => {
+  const { deleteRobotById } = useApi();
+
   return (
     <RobotCardStyled className="card-robot">
       <div className="card-robot__image-container">
@@ -22,7 +26,7 @@ const RobotCard = ({
       <h3 className="card-robot__title">{`${name}`}</h3>
       <div className="card-robot__buttons">
         <Button text="Edit" />
-        <Button text="Delete" />
+        <Button action={() => deleteRobotById(id!)} text="Delete" />
       </div>
     </RobotCardStyled>
   );
