@@ -46,12 +46,11 @@ describe("Given the  robotsReducer", () => {
       const expectedState: RobotsState = {
         robotsList: robotsList.slice(1),
       };
-      debugger;
+
       const newState = robotsReducer(
         initialState,
         deleteRobotActionCreator(robotOne._id!)
       );
-      console.log(newState);
 
       expect(newState).toStrictEqual(expectedState);
     });
