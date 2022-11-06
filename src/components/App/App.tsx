@@ -13,12 +13,7 @@ function App() {
     loadAllRobots();
   }, [loadAllRobots]);
 
-  return (
-    <AppStyled>
-      {isLoading && <Loading />}
-      <NotFoundPage />
-    </AppStyled>
-  );
+  return <AppStyled>{isLoading && <Loading />}</AppStyled>;
 }
 
 export default App;
