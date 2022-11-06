@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import useApi from "../../hooks/useApi";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import { useAppSelector } from "../../redux/hooks";
 import Loading from "../Loading/Loading";
 import AppStyled from "./AppStyled";
@@ -12,7 +13,12 @@ function App() {
     loadAllRobots();
   }, [loadAllRobots]);
 
-  return <AppStyled>{isLoading && <Loading />}</AppStyled>;
+  return (
+    <AppStyled>
+      {isLoading && <Loading />}
+      <NotFoundPage />
+    </AppStyled>
+  );
 }
 
 export default App;
