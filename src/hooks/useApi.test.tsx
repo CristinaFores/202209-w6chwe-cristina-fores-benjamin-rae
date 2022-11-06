@@ -1,4 +1,3 @@
-import { applyMiddleware } from "@reduxjs/toolkit";
 import { renderHook } from "@testing-library/react";
 import { Provider } from "react-redux";
 import mockRobotsResponse from "../mocks/mockRobotsResponse";

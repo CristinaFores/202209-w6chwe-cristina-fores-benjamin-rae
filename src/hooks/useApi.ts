@@ -49,8 +49,6 @@ const useApi = (): UseApi => {
         throw new Error("Couldn't delete robot");
       }
 
-      const robot: Robot = await response.json();
-
       dispatch(deleteRobotActionCreator(id));
     } catch (error: unknown) {
       throw new Error(`There was an error: ${(error as Error).message}`);

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import useApi from "../../hooks/useApi";
 import { Robot } from "../../redux/features/robotsSlice/types";
 import Button from "../Button/Button";
