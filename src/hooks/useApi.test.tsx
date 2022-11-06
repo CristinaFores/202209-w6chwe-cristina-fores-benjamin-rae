@@ -1,5 +1,11 @@
 import { renderHook } from "@testing-library/react";
 import { Provider } from "react-redux";
+import mockRobotsResponse from "../mocks/mockRobotsResponse";
+import { loadRobotsActionCreator } from "../redux/features/robotsSlice/robotsSlice";
+import {
+  hideLoadingActionCreator,
+  showLoadingActionCreator,
+} from "../redux/features/uiSlice/uiSlice";
 
 import { store } from "../redux/store";
 import useApi from "./useApi";
@@ -14,19 +20,30 @@ const ProviderWrapper = ({ children }: ProviderWrapperProps) => {
 const dispatchSpy = jest.spyOn(store, "dispatch");
 
 describe("Given the useApi custom hook", () => {
-  describe("When its method loadAllRobot is invoked", () => {
+  describe("When its method loadAllRobots is invoked", () => {
     test("Then is should  call the dispatch", async () => {
       const {
         result: {
-          current: { loadAllRobot },
+          current: { loadAllRobots },
         },
       } = renderHook(() => useApi(), {
         wrapper: ProviderWrapper,
       });
 
-      await loadAllRobot();
+      await loadAllRobots();
 
-      expect(dispatchSpy).toHaveBeenCalledTimes(1);
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        1,
+        showLoadingActionCreator()
+      );
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        2,
+        loadRobotsActionCreator(mockRobotsResponse)
+      );
+      expect(dispatchSpy).toHaveBeenNthCalledWith(
+        3,
+        hideLoadingActionCreator()
+      );
     });
   });
 });

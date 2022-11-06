@@ -3,7 +3,7 @@ export interface Robot {
   image: string;
   speed: number;
   strength: number;
-  createdOn: number;
+  createdOn: string;
   _id?: number;
 }
 
