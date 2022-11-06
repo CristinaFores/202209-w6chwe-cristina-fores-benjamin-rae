@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import mainTheme from "../../styles/mainTheme";
 
 export const RobotCardStyled = styled.li`
   display: flex;
