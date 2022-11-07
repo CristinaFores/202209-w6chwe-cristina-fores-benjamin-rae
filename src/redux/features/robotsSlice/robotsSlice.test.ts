@@ -1,6 +1,7 @@
 import { Robots, RobotsState } from "./types";
 import {
   deleteRobotActionCreator,
+  editRobotActionCreator,
   loadRobotsActionCreator,
   robotsReducer,
 } from "./robotsSlice";
@@ -50,6 +51,28 @@ describe("Given the  robotsReducer", () => {
       const newState = robotsReducer(
         initialState,
         deleteRobotActionCreator(robotOne._id!)
+      );
+
+      expect(newState).toStrictEqual(expectedState);
+    });
+  });
+
+  describe("When it receives inital satet 3 robot, a editRobot action with robot id", () => {
+    test("Then its should return the state modify de 1 robot", () => {
+      const robotsList = getRandomRobotsList(3);
+      const [robotOne, robotTwo, robotThree] = robotsList;
+      const newRobotOne = { ...robotOne, name: "Nuevo" };
+
+      const initialState: RobotsState = {
+        robotsList: robotsList,
+      };
+      const expectedState: RobotsState = {
+        robotsList: [newRobotOne, robotTwo, robotThree],
+      };
+
+      const newState = robotsReducer(
+        initialState,
+        editRobotActionCreator(newRobotOne)
       );
 
       expect(newState).toStrictEqual(expectedState);
