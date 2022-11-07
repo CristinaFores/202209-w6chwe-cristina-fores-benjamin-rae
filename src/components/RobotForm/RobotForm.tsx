@@ -33,11 +33,15 @@ const RobotForm = ({ isNew }: RobotFormProps) => {
   return (
     <RobotFormStyled>
       <div className="robot-form__form-group">
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="name">Name</label>
         <input
           id="name"
           value={formData.name}
           onChange={handleFormChange}
+          type="text"
+          className="robot-form__input"
+          placeholder="Write the robot's name here"
+          autoComplete="off"
         ></input>
       </div>
       <div className="robot-form__form-group">
@@ -49,6 +53,7 @@ const RobotForm = ({ isNew }: RobotFormProps) => {
           type="number"
           min="0"
           max="10"
+          className="robot-form__input"
         ></input>
       </div>
       <div className="robot-form__form-group">
@@ -60,6 +65,7 @@ const RobotForm = ({ isNew }: RobotFormProps) => {
           type="number"
           min="0"
           max="10"
+          className="robot-form__input"
         ></input>
       </div>
       <div className="robot-form__form-group">
@@ -69,6 +75,9 @@ const RobotForm = ({ isNew }: RobotFormProps) => {
           value={formData.image}
           onChange={handleFormChange}
           type="url"
+          className="robot-form__input"
+          placeholder="Paste the image url here"
+          autoComplete="off"
         ></input>
       </div>
       <Button text={isNew ? "Create Robot" : "Edit Robot"} />
