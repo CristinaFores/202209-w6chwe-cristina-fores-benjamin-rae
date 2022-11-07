@@ -15,6 +15,7 @@ const RobotFormStyled = styled.form`
     &__input {
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
+      border: none;
     }
   }
 `;
