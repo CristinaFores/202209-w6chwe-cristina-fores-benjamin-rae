@@ -1,16 +1,32 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { getRandomRobot } from "../../factories/robotsFactory";
 import { mockstore } from "../../mocks/storeMock";
+import renderWithProviders from "../../testUtils/renderWithProviders";
 import RobotCard from "./RobotCard";
+import useApi from "../../hooks/useApi";
+
+beforeEach(() => {
+  jest.clearAllMocks();
+});
+
+const mockDeleteById = jest.fn();
+
+jest.mock("../../hooks/useApi", () => {
+  return () => ({
+    deleteRobotById: mockDeleteById,
+  });
+});
 
 describe("Given a RobotCard componet", () => {
-  describe("when its is rendered", () => {
+  describe("when its is rendered with a received robot", () => {
+    const robot = getRandomRobot();
+    const textButtonDelete = "Delete";
+
     test("Then its should show an image with alt text name robot,headding level 3 and 2 buttons", () => {
-      const robot = getRandomRobot();
-      const { name, image, createdOn, speed, strength } = robot;
+      const { name } = robot;
       const textButtonEdit = "Edit";
-      const textButtonDelete = "Delete";
 
       render(
         <Provider store={mockstore}>
@@ -36,6 +52,20 @@ describe("Given a RobotCard componet", () => {
       expect(renderImageRobot).toBeInTheDocument();
       expect(renderButtonEdit).toBeInTheDocument();
       expect(renderButtonDelete).toBeInTheDocument();
+    });
+
+    describe("And when it's delete button is clicked", () => {
+      test("Then deleteRobotById should be called with the received robots id", async () => {
+        renderWithProviders(<RobotCard robot={robot} />);
+
+        const deleteButton = screen.queryByRole("button", {
+          name: textButtonDelete,
+        });
+
+        await userEvent.click(deleteButton!);
+
+        expect(mockDeleteById).toHaveBeenCalledWith(robot._id);
+      });
     });
   });
 });
