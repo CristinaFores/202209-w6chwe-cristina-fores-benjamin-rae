@@ -22,7 +22,7 @@ const useApi = (): UseApi => {
   const loadAllRobots = useCallback(async () => {
     dispatch(showLoadingActionCreator());
     try {
-      const response = await fetch(url!);
+      const response = await fetch(`${url}/robots`);
       const apiResponse: RobotsResponse = await response.json();
 
       if (response.status >= 400) {
@@ -41,7 +41,7 @@ const useApi = (): UseApi => {
   const deleteRobotById = async (id: string) => {
     const token = process.env.REACT_APP_TOKEN;
     try {
-      const response = await fetch(`${url}/robot/${id}?token=${token}`, {
+      const response = await fetch(`${url}/robots/robot/${id}?token=${token}`, {
         method: "DELETE",
       });
       if (response.status >= 400) {
